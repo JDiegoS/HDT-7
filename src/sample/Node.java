@@ -1,7 +1,7 @@
 
 /**
- * @author Juan Diego Solorzano
- * @Carne 18151
+ * @author Juan Diego Solorzano y  Luis Perez Aju
+ * @Carne 18151 y 18212
  * @name Node.java
  * Extraido de https://www.baeldung.com/java-binary-tree
  * */

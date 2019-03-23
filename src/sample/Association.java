@@ -1,6 +1,6 @@
 /**
- * @author Juan Diego Solorzano
- * @Carne 18151
+ * @author Juan Diego Solorzano y Luis Perez Aju
+ * @Carne 18151 y 18212
  * @name Association.java
  * Implementacion de Association extraido de http://www.cs.pomona.edu/classes/cs062/structure5/Association.java
  * */

@@ -2,8 +2,8 @@ package sample;
 
 
 /**
- * @author Juan Diego Solorzano
- * @Carne 18151
+ * @author Juan Diego Solorzano y Luis Perez Aju
+ * @Carne 18151 y 18212
  * @name Controller.java
  * Clase que contiene los metodos al usar la interfaz
  * * */
