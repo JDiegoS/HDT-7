@@ -1,6 +1,3 @@
-package sample;
-
-
 /**
  * @author Juan Diego Solorzano
  * @Carne 18151
@@ -10,87 +7,80 @@ package sample;
 
 public class BinaryTree {
 
-    Node root;
+    Node<Association> root;
 
-    private Node Recursiveadd(Node current, int value) {
+    // Agrega el nodo
+    private Node Recursiveadd(Node<Association> current, Association value) {
         if (current == null) {
             return new Node(value);
         }
 
-        if (value < current.value) {
+        if (value.compareTo(current.value) < 0)   {
             current.left = Recursiveadd(current.left, value);
-        } else if (value > current.value) {
+        } else if (value.compareTo(current.value) > 0) {
             current.right = Recursiveadd(current.right, value);
         } else {
-            // Ya existe el nodo
+            // Ya existe el valor
             return current;
         }
 
         return current;
     }
 
-    public void add(int value){
+    public void add(Association value){
         root = Recursiveadd(root, value);
     }
 
-    private boolean containsNodeRecursive(Node current, int value) {
+    // Verifica si contiene el nodo
+    private boolean containsNodeRecursive(Node current, String value) {
+        // no lo contiene
         if (current == null) {
             return false;
         }
-        if (value == current.value) {
+
+        //si lo contiene
+        if (value.equals(current.value)) {
             return true;
         }
-        return value < current.value
+        return value.compareTo(current.value.key.toString())<0
                 ? containsNodeRecursive(current.left, value)
                 : containsNodeRecursive(current.right, value);
     }
 
-    public boolean containsNode(int value) {
+    //Verifica si contiene el nodo comenzando desde el root
+    public boolean containsNode(String value) {
         return containsNodeRecursive(root, value);
     }
 
-    private Node deleteRecursive(Node current, int value) {
-        if (current == null) {
-            return null;
-        }
-
-        if (value == current.value) {
-            // Node to delete found
-            // No hay hijos
-            if (current.left == null && current.right == null) {
-                return null;
+    public String getSpanish(String english) {
+        Node node = root;
+        while (node != null) {
+            if (node.value.key.equals(english)) {
+                String key = node.value.value.toString();
+                return key;
             }
-
-            //Tiene un hijo
-            if (current.right == null) {
-                return current.left;
-            }
-
-            if (current.left == null) {
-                return current.right;
-            } else{
-                //Hay dos hijos
-                int smallestValue = findSmallestValue(current.right);
-                current.value = smallestValue;
-                current.right = deleteRecursive(current.right, smallestValue);
-                return current;
-            }
+            node = english.compareTo(node.value.key.toString()) < 0
+                    ? node.left
+                    : node.right;
         }
-        if (value < current.value) {
-            current.left = deleteRecursive(current.left, value);
-            return current;
-        }
-        current.right = deleteRecursive(current.right, value);
-        return current;
+        return null;
     }
 
-    private int findSmallestValue(Node root) {
-        return root.left == null ? root.value : findSmallestValue(root.left);
+    String text = "";
+    //Muestra el arbol en orden (in-order)
+    public String traverseInOrder(Node node) {
+
+        if (node != null) {
+            traverseInOrder(node.left);
+            text = text + (" " + node.value.key.toString() + " : " + node.value.value.toString());
+            traverseInOrder(node.right);
+            return text;
+        } else{
+            String txt = "No hay nodo";
+            return  txt;
+        }
     }
 
-    public void delete(int value) {
-        root = deleteRecursive(root, value);
-    }
 
 }
 
