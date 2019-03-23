@@ -1,5 +1,3 @@
-package sample;
-
 /**
  * @author Juan Diego Solorzano
  * @Carne 18151
